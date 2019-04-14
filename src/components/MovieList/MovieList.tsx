@@ -1,5 +1,5 @@
 import * as React from "react";
-import sampleMovies from "../data/sampleMovies";
+import sampleMovies from "../../data/sampleMovies";
 import MovieCard from "../UIComponents/MovieCard";
 
 const MovieList = () => {

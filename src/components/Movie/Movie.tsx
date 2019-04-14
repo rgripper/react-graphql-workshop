@@ -1,8 +1,8 @@
 import * as React from "react";
 import { match } from "react-router-dom";
-import sampleMovies from "../data/sampleMovies";
+import sampleMovies from "../../data/sampleMovies";
 import BackToHome from '../UIComponents/BackToHome';
-import MoviePage from '../UIComponents/MoviePage';
+import MoviePage from './MoviePage';
 
 interface MovieParams {
   id: string;

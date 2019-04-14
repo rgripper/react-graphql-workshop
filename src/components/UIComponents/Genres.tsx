@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Movie } from "../type/Movie";
+import { Movie } from "../../type/Movie";
 
 const Genres: React.SFC<{ genres: Movie["genres"] }> = ({ genres }) => (
   <div>

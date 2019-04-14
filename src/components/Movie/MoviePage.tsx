@@ -1,12 +1,13 @@
 import * as React from "react";
-import Rating from "./Rating";
-import Revenue from "./Revenue";
-import { Movie } from "../type/Movie";
-import ImageHeader from "./ImageHeader";
-import Detail from "./Detail";
-import Keywords from "./Keywords";
-import Genres from "./Genres";
-import { getImageUrl } from "../utils/imagePathHelper";
+import Rating from "../UIComponents/Rating";
+import Revenue from "../UIComponents/Revenue";
+import { Movie } from "../../type/Movie";
+import ImageHeader from "../UIComponents/ImageHeader";
+import TextDetail from "../UIComponents/TextDetail";
+import Keywords from "../UIComponents/Keywords";
+import Genres from "../UIComponents/Genres";
+import { getImageUrl } from "../../utils/imagePathHelper";
+import RatingCollector from '../RatingCollector/RatingCollector';
 
 interface MoviePageProps {
   movie: Movie;
@@ -30,22 +31,23 @@ const MoviePage: React.SFC<MoviePageProps> = ({ movie }) => {
             </div>
 
             <Rating rating={movie.voteAverage} size="large" />
+            <RatingCollector />
 
-            <Detail heading="Overview" detail={movie.overview} />
+            <TextDetail heading="Overview" detail={movie.overview} />
 
             <Genres genres={movie.genres} />
           </div>
 
           <div className="content-bottom">
-            <Detail heading="Tagline" detail={`"${movie.tagline}"`} />
+            <TextDetail heading="Tagline" detail={`"${movie.tagline}"`} />
 
-            <Detail heading="Movie length" detail={`${movie.runtime} mins`} />
+            <TextDetail heading="Movie length" detail={`${movie.runtime} mins`} />
 
             <Revenue revenue={movie.revenue} />
 
             <Keywords keywords={movie.keywords} />
 
-            <Detail heading="Language" detail={movie.language} />
+            <TextDetail heading="Language" detail={movie.language} />
           </div>
         </div>
       </div>

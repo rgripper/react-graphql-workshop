@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const Detail: React.SFC<{ heading: string; detail: string }> = ({
+const TextDetail: React.SFC<{ heading: string; detail: string }> = ({
   heading,
   detail
 }) => (
@@ -10,4 +10,4 @@ const Detail: React.SFC<{ heading: string; detail: string }> = ({
   </div>
 );
 
-export default Detail;
+export default TextDetail;
