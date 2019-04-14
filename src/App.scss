@@ -1,5 +1,6 @@
 body {
   font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 16px;
   background-color: #eee;
   margin: 0;
 
@@ -82,24 +83,13 @@ a {
     }
 
     .heading {
-    font-size: 18px;
-    font-weight: bold;
+      font-size: 18px;
+      font-weight: bold;
       margin-bottom: 8px;
     }
 
     .detail {
-      font-size: 16px;
       margin-bottom: 24px;
-    }
-
-    .rating {
-      display: flex;
-      align-items: center;
-      font-size: 16px;
-
-      svg {
-        margin-right: 4px;
-      }
     }
   }
 }
@@ -167,7 +157,7 @@ a {
     }
 
     .content-top {
-      height:450px;
+      height: 450px;
       color: white;
     }
 
@@ -175,46 +165,49 @@ a {
       color: #2c2c2c;
     }
 
+    .content-top,
+    .content-bottom {
+      > div {
+        margin-bottom: 32px;
+      }
+    }
+
     .heading {
       font-size: 20px;
       font-weight: bold;
       margin-bottom: 8px;
     }
-
-    .detail {
-      margin-bottom: 32px;
-    }
-
-    .rating {
-      display: flex;
-      align-items: center;
-      margin-bottom: 32px;
-
-      svg {
-        margin-right: 4px;
-      }
-    }
-
-    .genres, .keywords {
-      margin-bottom: 24px;
-      > span{
-        display: inline-block;
-        font-size: 16px;
-        border-radius: 16px;
-        padding: 4px 16px;
-        margin-bottom: 8px;
-        margin-right: 8px;
-      }
-    }
-
-    .genres > span {
-      color: rgba($color: #fff, $alpha: 0.8);
-      background-color: rgba($color: #000, $alpha: 0.2);
   }
+}
 
-    .keywords > span {
-      color: rgba($color: #000, $alpha: 0.8);
-      background-color: rgba($color: #000, $alpha: 0.1);
-    }
+.rating {
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 4px;
   }
+}
+
+.genres,
+.keywords {
+  margin-bottom: 24px;
+  > span {
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 16px;
+    padding: 4px 16px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+  }
+}
+
+.genres > span {
+  color: rgba($color: #fff, $alpha: 0.8);
+  background-color: rgba($color: #000, $alpha: 0.2);
+}
+
+.keywords > span {
+  color: rgba($color: #000, $alpha: 0.8);
+  background-color: rgba($color: #000, $alpha: 0.1);
 }
