@@ -1,6 +1,6 @@
 export default [
   {
-    id: 321612,
+    id: "321612",
     title: "Beauty and the Beast",
     genres: ["Family", "Fantasy", "Romance"],
     imdbId: "tt2771200",
@@ -38,7 +38,7 @@ export default [
     ]
   },
   {
-    id: 263115,
+    id: "263115",
     title: "Logan",
     genres: ["Action", "Drama", "Science Fiction"],
     imdbId: "tt3315342",
