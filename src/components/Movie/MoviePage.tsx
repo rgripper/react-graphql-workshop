@@ -31,7 +31,7 @@ const MoviePage: React.SFC<MoviePageProps> = ({ movie }) => {
             </div>
 
             <Rating rating={movie.voteAverage} size="large" />
-            <RatingCollector />
+            <RatingCollector movieId={movie.id} />
 
             <TextDetail heading="Overview" detail={movie.overview} />
 

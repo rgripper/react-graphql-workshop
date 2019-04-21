@@ -1,26 +1,26 @@
 import * as React from "react";
+import { ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { client } from "./utils/createApolloClient";
 import MovieList from "./components/MovieList/MovieList";
 import Movie from "./components/Movie/Movie";
-import uuidv4 from 'uuid/v4';
+import { setUserId } from "./utils/userIdHelper";
 import "./App.scss";
 
 const App = () => {
   React.useEffect(() => {
-    let userId = localStorage.getItem('userId');
-    if(!userId ) {
-      userId = uuidv4();
-      localStorage.setItem('userId', userId);
-    }
+    setUserId();
   });
 
   return (
-    <Router>
-      <div className="App">
-        <Route path="/" exact component={MovieList} />
-        <Route path="/movie/:id" component={Movie} />
-      </div>
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="App">
+          <Route path="/" exact component={MovieList} />
+          <Route path="/movie/:id" component={Movie} />
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 };
 

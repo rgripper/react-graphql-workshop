@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Rating from "./Rating";
 
 interface MovieCardProps {
-  id: number;
+  id: string;
   title: string;
   overview: string;
   posterUrl: string;

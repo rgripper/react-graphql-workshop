@@ -2,29 +2,63 @@ import * as React from "react";
 import { useRef, useState, useEffect } from "react";
 import Star from "@material-ui/icons/Star";
 import StarBorder from "@material-ui/icons/StarBorder";
+import { getUserId } from "../../utils/userIdHelper";
+import gql from "graphql-tag";
+import { Mutation } from "react-apollo";
 
-const RatingCollector: React.SFC = () => {
+const SET_RATING = gql`
+  mutation SetRating($input: SetRatingInput!) {
+    setRating(input: $input) {
+      message
+    }
+  }
+`;
+
+const RatingCollector: React.SFC<{ movieId: string }> = ({ movieId }) => {
   const { ref: hoverRef, value: hoverIndex } = useStarHover();
-  const [value, setValue] = useState<number | undefined>(undefined);
+  const [score, setRatingScore] = useState<number | undefined>(undefined);
+  const [userId, setUserId] = useState<string | undefined>(undefined);
   const stars = Array.from(Array(10).keys());
+
+  React.useEffect(() => {
+    setUserId(getUserId()!);
+  });
 
   return (
     <div ref={hoverRef} className="rating-collector">
-      {value ? (
+      {score ? (
         <>
           <Star nativeColor="#ff9800" />
-          <span> Your Rating: {value}</span>
+          <span> Your Rating: {score}</span>
         </>
       ) : (
-        stars.map((star, i) => (
-          <span key={star} data-sequence={i + 1}>
-            {i < hoverIndex ? (
-              <Star nativeColor="#ff9800" onClick={() => setValue(i + 1)} />
-            ) : (
-              <StarBorder nativeColor="#ff9800" />
-            )}
-          </span>
-        ))
+        <Mutation mutation={SET_RATING}>
+          {(setRating: any) =>
+            stars.map((star, i) => (
+              <span key={star} data-sequence={i + 1}>
+                {i < hoverIndex ? (
+                  <Star
+                    nativeColor="#ff9800"
+                    onClick={() => {
+                      setRatingScore(i + 1);
+                      setRating({
+                        variables: {
+                          input: {
+                            movieId,
+                            userId,
+                            score: i + 1
+                          }
+                        }
+                      });
+                    }}
+                  />
+                ) : (
+                  <StarBorder nativeColor="#ff9800" />
+                )}
+              </span>
+            ))
+          }
+        </Mutation>
       )}
     </div>
   );
