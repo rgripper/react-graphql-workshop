@@ -1,8 +1,10 @@
 import * as React from "react";
 import { match } from "react-router-dom";
-import sampleMovies from "../../data/sampleMovies";
-import BackToHome from '../UIComponents/BackToHome';
-import MoviePage from './MoviePage';
+// import sampleMovies from "../../data/sampleMovies";
+import BackToHome from "../UIComponents/BackToHome";
+import MoviePage from "./MoviePage";
+import { Query } from "react-apollo";
+import { GET_MOVIE } from "./query";
 
 interface MovieParams {
   id: string;
@@ -10,21 +12,24 @@ interface MovieParams {
 
 interface MovieProps {
   required: string;
-  match?: match<MovieParams>;
+  match: match<MovieParams>;
 }
 
-const Movie: React.SFC<MovieProps> = ({ match }) => {
-  const movie = sampleMovies.find(m =>
-    match ? m.id.toString() === match.params.id : false
-  );
+const Movie: React.SFC<MovieProps> = ({ match }) => (
+  <>
+    <BackToHome />
+    <Query query={GET_MOVIE} variables={{ id: match.params.id }}>
+      {({ data, loading, error }) => {
+        if (loading) return <div>Loading...</div>;
+        if (error) {
+          console.log(error);
+          return <div>Error :(</div>;
+        }
 
-  return (
-    <>
-      <BackToHome />
-
-      {movie && <MoviePage movie={movie} />}
-    </>
-  );
-};
+        return <MoviePage movie={data.movie} />;
+      }}
+    </Query>
+  </>
+);
 
 export default Movie;

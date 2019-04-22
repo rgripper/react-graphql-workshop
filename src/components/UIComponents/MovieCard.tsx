@@ -11,7 +11,7 @@ interface MovieCardProps {
   voteAverage: number;
 }
 
-const MovieCard: React.SFC<MovieCardProps> = props => (
+const MovieCard: React.FunctionComponent<MovieCardProps> = props => (
   <Link key={props.id} to={`/movie/${props.id}`} className="list-item">
     <div className="image-container">
       <img src={props.posterUrl} />
