@@ -12,13 +12,13 @@ interface MovieParams {
 
 interface MovieProps {
   required: string;
-  match?: match<MovieParams>;
+  match: match<MovieParams>;
 }
 
 const Movie: React.SFC<MovieProps> = ({ match }) => (
   <>
     <BackToHome />
-    <Query query={GET_MOVIE} variables={{ id: "101299" }}>
+    <Query query={GET_MOVIE} variables={{ id: match.params.id }}>
       {({ data, loading, error }) => {
         if (loading) return <div>Loading...</div>;
         if (error) {
