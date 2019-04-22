@@ -8,7 +8,6 @@ import Keywords from "../UIComponents/Keywords";
 import Genres from "../UIComponents/Genres";
 import { getImageUrl } from "../../utils/imagePathHelper";
 import RatingCollector from "../RatingCollector/RatingCollector";
-
 interface MoviePageProps {
   movie: Movie;
 }

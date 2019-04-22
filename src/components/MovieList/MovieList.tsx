@@ -1,18 +1,18 @@
 import * as React from "react";
-import sampleMovies from "../../data/sampleMovies";
+// import sampleMovies from "../../data/sampleMovies";
 import MovieCard from "../UIComponents/MovieCard";
 import { Query } from "react-apollo";
 import { GET_MOVIES } from "./query";
 
 const MovieList = () => (
   <Query query={GET_MOVIES}>
-    {({ data, loading, error }) => {
+    {({ data: { movies }, loading, error }) => {
       if (loading) return <div>Loading...</div>;
       if (error) return <div>Error :(</div>;
 
       return (
         <div className="movie-list">
-          {sampleMovies.map(movie => (
+          {movies.map(movie => (
             <MovieCard
               key={movie.id}
               id={movie.id}
