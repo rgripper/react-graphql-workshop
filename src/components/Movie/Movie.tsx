@@ -1,8 +1,8 @@
 import * as React from "react";
 import { match } from "react-router-dom";
 import sampleMovies from "../../data/sampleMovies";
-import BackToHome from '../UIComponents/BackToHome';
-import MoviePage from './MoviePage';
+import BackToHome from "../UIComponents/BackToHome";
+import MoviePage from "./MoviePage";
 
 interface MovieParams {
   id: string;
@@ -21,7 +21,6 @@ const Movie: React.SFC<MovieProps> = ({ match }) => {
   return (
     <>
       <BackToHome />
-
       {movie && <MoviePage movie={movie} />}
     </>
   );

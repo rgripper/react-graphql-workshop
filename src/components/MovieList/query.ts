@@ -1,14 +1,10 @@
-import gql from "graphql-tag";
+import { gql } from "apollo-boost";
 
-export const GEX_MOVIES = gql`
-  query GetMovies {
+export const GET_MOVIES = gql`
+  query getMovies {
     movies {
-      id
       title
-      overview
-      posterUrl
-      tagline
-      voteAverage
+      id
     }
   }
 `;

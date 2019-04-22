@@ -1,22 +1,32 @@
 import * as React from "react";
 import sampleMovies from "../../data/sampleMovies";
 import MovieCard from "../UIComponents/MovieCard";
+import { Query } from "react-apollo";
+import { GET_MOVIES } from "./query";
 
-const MovieList = () => {
-  return (
-    <div className="movie-list">
-      {sampleMovies.map(movie => (
-        <MovieCard
-          id={movie.id}
-          title={movie.title}
-          overview={movie.overview}
-          posterUrl={movie.posterUrl}
-          tagline={movie.tagline}
-          voteAverage={movie.voteAverage}
-        />
-      ))}
-    </div>
-  );
-};
+const MovieList = () => (
+  <Query query={GET_MOVIES}>
+    {({ data, loading, error }) => {
+      if (loading) return <div>Loading...</div>;
+      if (error) return <div>Error :(</div>;
+
+      return (
+        <div className="movie-list">
+          {sampleMovies.map(movie => (
+            <MovieCard
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              overview={movie.overview}
+              posterUrl={movie.posterUrl}
+              tagline={movie.tagline}
+              voteAverage={movie.voteAverage}
+            />
+          ))}
+        </div>
+      );
+    }}
+  </Query>
+);
 
 export default MovieList;

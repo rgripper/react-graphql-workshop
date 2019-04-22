@@ -1,16 +1,16 @@
 import * as React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import uuidv4 from "uuid/v4";
 import MovieList from "./components/MovieList/MovieList";
 import Movie from "./components/Movie/Movie";
-import uuidv4 from 'uuid/v4';
 import "./App.scss";
 
 const App = () => {
   React.useEffect(() => {
-    let userId = localStorage.getItem('userId');
-    if(!userId ) {
+    let userId = localStorage.getItem("userId");
+    if (!userId) {
       userId = uuidv4();
-      localStorage.setItem('userId', userId);
+      localStorage.setItem("userId", userId);
     }
   });
 
