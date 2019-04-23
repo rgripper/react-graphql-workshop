@@ -1,25 +1,15 @@
-import { gql } from "apollo-boost";
+//TODO:
+// 1. import { gql } from "apollo-boost";
+// 2. write your own query by following the formate:
+/* 
+query queryName($variableName: type) {
+ query content
+ movie(id: $id)
+} 
+*/
 
-export const GET_MOVIE = gql`
-  query getMovie($id: ID!) {
-    movie(id: $id) {
-      id
-      title
-      keywords {
-        id
-        name
-      }
-      overview
-      posterUrl
-      posterPath
-      tagline
-      voteAverage
-      releaseDate
-      genres
-      runtime
-      revenue
-      language
-      imdbId
-    }
-  }
-`;
+//3. export this query
+
+// import { gql } from "apollo-boost";
+
+export const GET_MOVIE = null;

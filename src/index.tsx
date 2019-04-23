@@ -1,22 +1,20 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-const client = new ApolloClient({ uri: "http://localhost:4000/" });
+// create a new ApolloClient, which is from "apollo-boost";
+// pass {uri: "GraphQL endpoint"} as the input for ApolloClient
 
-const ApolloApp = () => (
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>
-);
+// use ApolloProvider as the Provider, which is from "react-apollo"
+// Passing "client" to ApolloProvider
+// wrapper App with ApolloProvider
 
-ReactDOM.render(<ApolloApp />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
+
 serviceWorker.unregister();
