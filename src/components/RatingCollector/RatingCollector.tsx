@@ -3,16 +3,8 @@ import { useRef, useState, useEffect } from "react";
 import Star from "@material-ui/icons/Star";
 import StarBorder from "@material-ui/icons/StarBorder";
 import { getUserId } from "../../utils/userIdHelper";
-import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
-
-const SET_RATING = gql`
-  mutation SetRating($input: SetRatingInput!) {
-    setRating(input: $input) {
-      message
-    }
-  }
-`;
+import { SET_RATING } from './mutation';
 
 const RatingCollector: React.FC<{ movieId: string }> = ({ movieId }) => {
   const { ref: hoverRef, value: hoverIndex } = useStarHover();
