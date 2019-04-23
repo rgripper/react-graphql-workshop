@@ -14,7 +14,7 @@ const SET_RATING = gql`
   }
 `;
 
-const RatingCollector: React.SFC<{ movieId: string }> = ({ movieId }) => {
+const RatingCollector: React.FC<{ movieId: string }> = ({ movieId }) => {
   const { ref: hoverRef, value: hoverIndex } = useStarHover();
   const [score, setRatingScore] = useState<number | undefined>(undefined);
   const [userId, setUserId] = useState<string | undefined>(undefined);
@@ -25,7 +25,7 @@ const RatingCollector: React.SFC<{ movieId: string }> = ({ movieId }) => {
   });
 
   return (
-    <div ref={hoverRef} className="rating-collector">
+    <div>
       {score ? (
         <>
           <Star nativeColor="#ff9800" />
@@ -33,31 +33,33 @@ const RatingCollector: React.SFC<{ movieId: string }> = ({ movieId }) => {
         </>
       ) : (
         <Mutation mutation={SET_RATING}>
-          {(setRating: any) =>
-            stars.map((star, i) => (
-              <span key={star} data-sequence={i + 1}>
-                {i < hoverIndex ? (
-                  <Star
-                    nativeColor="#ff9800"
-                    onClick={() => {
-                      setRatingScore(i + 1);
-                      setRating({
-                        variables: {
-                          input: {
-                            movieId,
-                            userId,
-                            score: i + 1
+          {(setRating: any) => (
+            <div ref={hoverRef} className="rating-collector">
+              {stars.map((star, i) => (
+                <span key={star} data-sequence={i + 1}>
+                  {i < hoverIndex ? (
+                    <Star
+                      nativeColor="#ff9800"
+                      onClick={() => {
+                        setRatingScore(i + 1);
+                        setRating({
+                          variables: {
+                            input: {
+                              movieId,
+                              userId,
+                              score: i + 1
+                            }
                           }
-                        }
-                      });
-                    }}
-                  />
-                ) : (
-                  <StarBorder nativeColor="#ff9800" />
-                )}
-              </span>
-            ))
-          }
+                        });
+                      }}
+                    />
+                  ) : (
+                    <StarBorder nativeColor="#ff9800" />
+                  )}
+                </span>
+              ))}
+            </div>
+          )}
         </Mutation>
       )}
     </div>

@@ -20,7 +20,7 @@ interface MovieProps {
   match: match<MovieParams>;
 }
 
-const Movie: React.SFC<MovieProps> = ({ match }) => {
+const Movie: React.FC<MovieProps> = ({ match }) => {
   const movie = sampleMovies.find(movie => match.params.id === movie.id);
   return (
     <>
