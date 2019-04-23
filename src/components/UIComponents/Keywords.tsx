@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Movie } from "../../type/Movie";
 
-const Keywords: React.SFC<{ keywords: Movie["keywords"] }> = ({ keywords }) => (
+const Keywords: React.FC<{ keywords: Movie["keywords"] }> = ({ keywords }) => (
   <div>
     <div className="heading">Keywords</div>
     <div className="keywords">

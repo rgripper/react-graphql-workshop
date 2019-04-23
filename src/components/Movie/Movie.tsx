@@ -15,7 +15,7 @@ interface MovieProps {
   match: match<MovieParams>;
 }
 
-const Movie: React.SFC<MovieProps> = ({ match }) => (
+const Movie: React.FC<MovieProps> = ({ match }) => (
   <>
     <BackToHome />
     <Query query={GET_MOVIE} variables={{ id: match.params.id }}>

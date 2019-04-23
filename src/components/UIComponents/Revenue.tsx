@@ -9,7 +9,7 @@ interface RevenueProps {
   revenue: number;
 }
 
-const Revenue: React.SFC<RevenueProps> = ({ revenue }) => {
+const Revenue: React.FC<RevenueProps> = ({ revenue }) => {
   return (
     <>
       <div className="heading">Revenue</div>

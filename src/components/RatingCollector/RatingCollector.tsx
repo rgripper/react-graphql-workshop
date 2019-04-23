@@ -14,7 +14,7 @@ const SET_RATING = gql`
   }
 `;
 
-const RatingCollector: React.SFC<{ movieId: string }> = ({ movieId }) => {
+const RatingCollector: React.FC<{ movieId: string }> = ({ movieId }) => {
   const { ref: hoverRef, value: hoverIndex } = useStarHover();
   const [score, setRatingScore] = useState<number | undefined>(undefined);
   const [userId, setUserId] = useState<string | undefined>(undefined);

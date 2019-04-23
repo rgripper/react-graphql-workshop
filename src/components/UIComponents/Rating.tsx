@@ -6,7 +6,7 @@ interface RatingProps {
   size?: "default" | "large";
 }
 
-const Rating: React.SFC<RatingProps> = ({ rating, size }) => (
+const Rating: React.FC<RatingProps> = ({ rating, size }) => (
   <div className="rating">
     <StarIcon nativeColor="#ff9800" fontSize={size} />
     {rating}/10

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const TextDetail: React.SFC<{ heading: string; detail: string }> = ({
+const TextDetail: React.FC<{ heading: string; detail: string }> = ({
   heading,
   detail
 }) => (
