@@ -1,18 +1,22 @@
+// 1. use {gql} from "apollo-boost"
+// 2. write your own mutation by following the formate:
+/* 
+mutation mutationName($variableName: type) {
+ mutation content
+ setRating(input: $input) {
+  message
+  }
+} 
+*/
+// 3. use { Mutation } component provided by "react-apollo"
+// 4. pass GraphQL mutation into Mutation component as the field of mutation
+// 5. You can use your mutation within the mutation component as props
+
 import * as React from "react";
 import { useRef, useState, useEffect } from "react";
 import Star from "@material-ui/icons/Star";
 import StarBorder from "@material-ui/icons/StarBorder";
 import { getUserId } from "../../utils/userIdHelper";
-import gql from "graphql-tag";
-import { Mutation } from "react-apollo";
-
-const SET_RATING = gql`
-  mutation SetRating($input: SetRatingInput!) {
-    setRating(input: $input) {
-      message
-    }
-  }
-`;
 
 const RatingCollector: React.FC<{ movieId: string }> = ({ movieId }) => {
   const { ref: hoverRef, value: hoverIndex } = useStarHover();
@@ -32,35 +36,27 @@ const RatingCollector: React.FC<{ movieId: string }> = ({ movieId }) => {
           <span> Your Rating: {score}</span>
         </>
       ) : (
-        <Mutation mutation={SET_RATING}>
-          {(setRating: any) => (
-            <div ref={hoverRef} className="rating-collector">
-              {stars.map((star, i) => (
-                <span key={star} data-sequence={i + 1}>
-                  {i < hoverIndex ? (
-                    <Star
-                      nativeColor="#ff9800"
-                      onClick={() => {
-                        setRatingScore(i + 1);
-                        setRating({
-                          variables: {
-                            input: {
-                              movieId,
-                              userId,
-                              score: i + 1
-                            }
-                          }
-                        });
-                      }}
-                    />
-                  ) : (
-                    <StarBorder nativeColor="#ff9800" />
-                  )}
-                </span>
-              ))}
-            </div>
-          )}
-        </Mutation>
+        // <Mutation mutation={SET_RATING}>
+        // {(setRating: any) => (
+
+        <div ref={hoverRef} className="rating-collector">
+          {stars.map((star, i) => (
+            <span key={star} data-sequence={i + 1}>
+              {i < hoverIndex ? (
+                <Star
+                  nativeColor="#ff9800"
+                  onClick={() => {
+                    setRatingScore(i + 1);
+                  }}
+                />
+              ) : (
+                <StarBorder nativeColor="#ff9800" />
+              )}
+            </span>
+          ))}
+        </div>
+
+        // </Mutation>
       )}
     </div>
   );

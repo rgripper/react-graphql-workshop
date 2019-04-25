@@ -10,6 +10,4 @@ query queryName($variableName: type) {
 
 //3. export this query
 
-// import { gql } from "apollo-boost";
-
 export const GET_MOVIE = null;
