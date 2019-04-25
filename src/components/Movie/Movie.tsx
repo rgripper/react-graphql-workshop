@@ -4,7 +4,7 @@ import sampleMovies from "../../data/sampleMovies";
 import BackToHome from "../UIComponents/BackToHome";
 import MoviePage from "./MoviePage";
 
-//TODO:
+// TODO:
 // 1. use { Query } component provided by "react-apollo"
 // 2. write query for movieList, defined in query.ts
 // 3. pass GraphQL query into Query component as the field of query
@@ -20,8 +20,9 @@ interface MovieProps {
   match: match<MovieParams>;
 }
 
+// tslint:disable-next-line: no-shadowed-variable - This is a issue with react router interface naming
 const Movie: React.FC<MovieProps> = ({ match }) => {
-  const movie = sampleMovies.find(movie => match.params.id === movie.id);
+  const movie = sampleMovies.find(item => match.params.id === item.id);
   return (
     <>
       <BackToHome />

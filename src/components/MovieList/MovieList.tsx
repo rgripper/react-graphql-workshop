@@ -2,7 +2,7 @@ import * as React from "react";
 import sampleMovies from "../../data/sampleMovies";
 import MovieCard from "../UIComponents/MovieCard";
 
-//TODO:
+// TODO:
 // 1. use { Query } component provided by "react-apollo"
 // 2. write query for movieList, defined in query.ts
 // 3. pass GraphQL query into Query component as the field of query
