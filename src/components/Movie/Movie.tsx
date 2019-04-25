@@ -15,6 +15,7 @@ interface MovieProps {
   match: match<MovieParams>;
 }
 
+// tslint:disable-next-line: no-shadowed-variable
 const Movie: React.FC<MovieProps> = ({ match }) => (
   <>
     <BackToHome />
