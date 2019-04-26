@@ -12,17 +12,26 @@ const MovieList = () => (
 
       return (
         <div className="movie-list">
-          {movies.map(movie => (
-            <MovieCard
-              key={movie.id}
-              id={movie.id}
-              title={movie.title}
-              overview={movie.overview}
-              posterUrl={movie.posterUrl}
-              tagline={movie.tagline}
-              voteAverage={movie.voteAverage}
-            />
-          ))}
+          {movies.map(
+            (movie: {
+              id: string | number | undefined;
+              title: string;
+              overview: string;
+              posterUrl: string;
+              tagline: string;
+              voteAverage: number;
+            }) => (
+              <MovieCard
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                overview={movie.overview}
+                posterUrl={movie.posterUrl}
+                tagline={movie.tagline}
+                voteAverage={movie.voteAverage}
+              />
+            )
+          )}
         </div>
       );
     }}
