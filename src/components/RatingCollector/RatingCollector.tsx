@@ -15,9 +15,8 @@ mutation mutationName($variableName: type) {
 // 7. You can use your mutation within the mutation component as props
 
 import * as React from "react";
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 import Star from "@material-ui/icons/Star";
-import StarBorder from "@material-ui/icons/StarBorder";
 import { getUserId } from "../../utils/userIdHelper";
 import RatingStars from '../UIComponents/RatingStars';
 
